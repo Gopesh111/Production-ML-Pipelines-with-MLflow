@@ -56,3 +56,42 @@ mlflow server --backend-store-uri sqlite:///mlflow_server/mlflow.db --default-ar
 # run training script
 python train.py
 ```
+
+## Output
+- Compared multiple runs using accuracy and precision  
+- Visualized model errors using confusion matrix  
+- Stored artifacts and models for each experiment  
+
+
+# Day 3
+
+## Problem
+After multiple experiments, it is difficult to manage which model to use.  
+No clear way to track versions or decide which model goes to production.
+
+## Solution
+Used MLflow Model Registry to:
+- Version models automatically
+- Manage lifecycle (Staging → Production)
+- Track best-performing model
+
+## Steps
+1. Train model and log metrics  
+2. Register model in MLflow  
+3. Create multiple model versions  
+4. Promote model to Staging or Production  
+5. Compare and select best version  
+
+## Run Instructions
+```bash
+# make sure tracking server is running
+mlflow server --backend-store-uri sqlite:///mlflow_server/mlflow.db --default-artifact-root ./mlflow_server/artifacts
+
+# run training script (will register models)
+python train.py
+```
+
+## Output
+- Model versions created (v1, v2, v3)  
+- Ability to promote models to Staging/Production  
+- Clear tracking of which model is active  
