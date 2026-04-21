@@ -94,4 +94,63 @@ python train.py
 ## Output
 - Model versions created (v1, v2, v3)  
 - Ability to promote models to Staging/Production  
-- Clear tracking of which model is active  
+- Clear tracking of which model is active
+
+# Day 4
+
+## Problem
+Local MLflow tracking is not suitable for team collaboration and persistent storage.
+
+## Solution
+Configured MLflow with a database backend (SQLite) to:
+- Store experiment metadata centrally
+- Enable persistence across sessions
+- Support scalable tracking
+
+## Steps
+1. Set up MLflow tracking server
+2. Configure SQLite as backend store
+3. Run training script
+4. Verify persistence after server restart
+
+## Run Instructions
+```bash
+# start tracking server
+mlflow server --backend-store-uri sqlite:///mlflow_server/mlflow.db --default-artifact-root ./mlflow_server/artifacts
+
+# run training
+python train.py
+```
+
+## Output
+- Experiments stored in database
+- Data persists across restarts
+- Centralized tracking system ready
+
+# Day 5
+
+## Problem
+Manual hyperparameter tuning is inefficient and hard to track.
+
+## Solution
+Integrated Optuna with MLflow to:
+- Automatically explore parameter space
+- Log all trials
+- Identify best configuration
+
+## Steps
+1. Define objective function
+2. Use Optuna to run multiple trials
+3. Log each trial in MLflow
+4. Compare results
+
+## Run Instructions
+```bash
+pip install -r requirements.txt
+python train.py
+```
+
+## Output
+- 20+ runs automatically generated
+- Best hyperparameters identified
+- Full experiment tracking in MLflow
