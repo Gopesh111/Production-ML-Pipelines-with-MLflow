@@ -154,3 +154,30 @@ python train.py
 - 20+ runs automatically generated
 - Best hyperparameters identified
 - Full experiment tracking in MLflow
+
+- # Day 6
+
+## Problem
+Saving models in raw formats (pickle) is not portable or standardized.
+
+## Solution
+Used MLflow Models to:
+- Save models with standard format
+- Enable easy loading and inference
+- Support multiple frameworks via flavors
+
+## Steps
+1. Train model
+2. Save model using MLflow
+3. Load model using MLflow API
+4. Run inference
+
+## Run Instructions
+```bash
+python train.py
+```
+
+## Output
+- Model saved in MLflow format
+- Model reloaded successfully
+- Predictions generated from loaded model
